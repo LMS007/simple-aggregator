@@ -1,0 +1,19 @@
+{
+  "name": "simple-aggregator",
+  "version": "1.0.0",
+  "description": "Attached, find the file `events.csv`, which contains a log of events with the the format customer\\_id, event\\_type, transaction\\_id, timestamp.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LMS007/customer-events.git"
+  },
+  "author": "kyle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LMS007/customer-events/issues"
+  },
+  "homepage": "https://github.com/LMS007/customer-events#readme"
+}
