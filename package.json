@@ -4,6 +4,7 @@
   "description": "Attached, find the file `events.csv`, which contains a log of events with the the format customer\\_id, event\\_type, transaction\\_id, timestamp.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/LMS007/customer-events/issues"
   },
-  "homepage": "https://github.com/LMS007/customer-events#readme"
+  "homepage": "https://github.com/LMS007/customer-events#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
