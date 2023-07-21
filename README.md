@@ -8,7 +8,7 @@ in the query.
 ## To run
 
 - requires node 18
-- coded in Windows 11, not tested on Mac.
+- tested on Windows 11 & MacOS.
 
 
 ```
@@ -22,7 +22,7 @@ Query params:
 
 customer: the customer ID 
 lower: The lower bound time stamp in YYYY-MM-DDTHH:mm:ss.sssZ
-upper: The uppder bound time stamp in YYYY-MM-DDTHH:mm:ss.sssZ
+upper: The upper bound time stamp in YYYY-MM-DDTHH:mm:ss.sssZ
 
 e.g.
 
