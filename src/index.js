@@ -29,7 +29,7 @@ loadData();
  *         schema:
  *           type: string
  *         required: true
- *         description: The upper bound time stamp in YYYY-MM-DDTHH:mm:ss.sssZ
+ *         description: The upper bound time stamp in YYYY-MM-DDTHH:mm:ss.sssZ. Note: If the upper range boundary includes part of a bucket, then that entire bucket will be counted.
  *     responses:
  *       200:
  *         description: The array of buckets
