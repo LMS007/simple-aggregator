@@ -12,7 +12,7 @@ let dataPromise = new Promise((resolve) => {
  * Load the event data from file
  */
 function loadData() {
-  stream = fs.createReadStream(`${__dirname}/../events.csv`);
+  const stream = fs.createReadStream(`${__dirname}/../events.csv`);
 
   stream.on('data', function(data) {
       var chunk = data.toString();
