@@ -13,26 +13,38 @@ let dataPromise = new Promise((resolve) => {
  */
 function loadData() {
   const stream = fs.createReadStream(`${__dirname}/../events.csv`);
+  var partialPreviousLine = '';
 
   stream.on('data', function(data) {
       var chunk = data.toString();
+      const endsInNewLine = chunk[chunk.length-1] === '\n';
       const rows = chunk.split('\n');
-      
-      for (row of rows) {
-        const [customerId, eventType, transactionId, time] = row.split(',');
-        if (!customers[customerId]) {
-          customers[customerId] = [];
-        }
-        // create the customer event objects and push to an array
-        // assumption: each transactionId is unique
-        customers[customerId].push({
-          transactionId,
-          eventType,
-          time
-        });
-      }
 
-      
+      let currentRow = 0;
+      for (let row of rows) {
+        if (!endsInNewLine && (currentRow === rows.length-1)) {
+          // likely reached the 65546 buffer limit
+          // if it does not end with a new line and this is the last row, save
+          // the string for the next data chunk because this is a partial row
+          partialPreviousLine = row;
+        } else {
+          const [customerId, eventType, transactionId, time] = `${partialPreviousLine}${row}`.split(',');
+          if (customerId.length > 0) { // ignore blank lines
+            if (!customers[customerId]) {
+              customers[customerId] = [];
+            }
+            // create the customer event objects and push to an array
+            // assumption: each transactionId is unique
+            customers[customerId].push({
+              transactionId,
+              eventType,
+              time
+            });
+          }
+          partialPreviousLine  = '';
+        }
+        currentRow += 1;
+      }
   }); 
 
   stream.on('end', function(data) {
